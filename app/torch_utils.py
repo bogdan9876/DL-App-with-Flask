@@ -36,11 +36,11 @@ def transform_image(image_bytes):
                                     transforms.ToTensor(),
                                     transforms.Normalize((0.1307,), (0.3081,))])
     image = Image.open(io.BytesIO(image_bytes))
-    return transform(image).unqueeze(0)
+    return transform(image).unsqueeze(0)
 
 
 def get_prediction(image_tensor):
-    images = images.reshape(-1, 28 * 28)
-    outputs = model(images)
+    image_tensor = image_tensor.reshape(-1, 28 * 28)
+    outputs = model(image_tensor)
     _, predicted = torch.max(outputs.data, 1)
     return predicted
