@@ -9,3 +9,5 @@ absl-py
 Flask
 Pillow
 waitress
+flask
+flask_cors
